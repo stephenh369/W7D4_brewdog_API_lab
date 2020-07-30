@@ -5,6 +5,7 @@
       
       <div id="favourite-button">
             <button v-if="!favBeers.includes(beer)" v-on:click="handleClick">Add {{beer.name}} to your favourite beers?</button>
+            <button v-if="favBeers.includes(beer)" v-on:click="handleRemove">Remove {{beer.name}} from your favourite beers?</button>
         </div>
     <img :src="beer.image_url">
 
@@ -32,6 +33,9 @@ export default {
     methods: {
         handleClick() {
             eventBus.$emit('favourite-beer', this.beer)
+        },
+        handleRemove() {
+            eventBus.$emit('unfavourite-beer', this.beer)
         }
     },
     components: {

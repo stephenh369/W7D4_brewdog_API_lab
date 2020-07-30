@@ -21,6 +21,7 @@ export default {
     },
     mounted() {
         eventBus.$on('favourite-beer', (favBeers) => {this.favBeers.push(favBeers)}),
+        eventBus.$on('unfavourite-beer', (favBeers) => {this.favBeers.splice(this.favBeers.indexOf(favBeers), 1)}),
         eventBus.$emit('favourite-beers', this.favBeers)
 
     }
