@@ -12,17 +12,16 @@
       <div id="ingredients">
           <h4>Malts</h4>
           <ul>
-              <li v-for="(malt, index) in beer.ingredients.malt" :malt="malt" :key="index">{{malt.name}}</li>
+              <li v-for="(malt, index) in filterMaltDups" :malt="malt" :key="index">{{malt}}</li>
           </ul>
           <h4>Hops</h4>
             <ul>
-              <li v-for="(hop, index) in beer.ingredients.hops" :hop="hop" :key="index">{{hop.name}}</li>
+              <li v-for="(hop, index) in filterHopDups" :hop="hop" :key="index">{{hop}}</li>
             </ul>
             <h4>Yeast</h4>
             <ul>
                 <li>{{beer.ingredients.yeast}}</li>
             </ul>
-          <!-- <p v-for="(i, index) in beer.ingredients.malt" :i="i" :key="index">{{i.name}}</p> -->
       </div>
 
     </div>
@@ -45,6 +44,20 @@ export default {
         eventBus.$on('favourite-beers', (beers) => {this.favBeers = beers})
     },
     props: ['favourite-beer'],
+    computed: {
+        filterMaltDups() {
+            const array = this.beer.ingredients.malt;
+            const newArray = array.map((i) => i.name);
+            const filteredArray = newArray.filter((i, index) => newArray.indexOf(i) === index);
+            return filteredArray;
+        },
+        filterHopDups() {
+            const array = this.beer.ingredients.hops;
+            const newArray = array.map((i) => i.name);
+            const filteredArray = newArray.filter((i, index) => newArray.indexOf(i) === index);
+            return filteredArray;
+        }
+    },
     methods: {
         handleClick() {
             eventBus.$emit('favourite-beer', this.beer)
