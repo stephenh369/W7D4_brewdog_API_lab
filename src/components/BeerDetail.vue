@@ -19,7 +19,7 @@ export default {
     mounted() {
         eventBus.$on('beer-select', (beer) => {this.beer = beer})
     },
-    props: ['beer'],
+    props: ['favourite-beer'],
     methods: {
         handleSubmit() {
             eventBus.$emit('favourite-beer', this.beer)
