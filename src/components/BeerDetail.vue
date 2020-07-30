@@ -10,9 +10,18 @@
       <img :src="beer.image_url">
 
       <div id="ingredients">
-          <ul v-for="(type, index) in beer.ingredients" :type="type" :key="index">
-              <li v-for="(i, index) in type" :i="i" :key="index">{{i}}</li>
+          <h4>Malts</h4>
+          <ul>
+              <li v-for="(malt, index) in beer.ingredients.malt" :malt="malt" :key="index">{{malt.name}}</li>
           </ul>
+          <h4>Hops</h4>
+            <ul>
+              <li v-for="(hop, index) in beer.ingredients.hops" :hop="hop" :key="index">{{hop.name}}</li>
+            </ul>
+            <h4>Yeast</h4>
+            <ul>
+                <li>{{beer.ingredients.yeast}}</li>
+            </ul>
           <!-- <p v-for="(i, index) in beer.ingredients.malt" :i="i" :key="index">{{i.name}}</p> -->
       </div>
 
