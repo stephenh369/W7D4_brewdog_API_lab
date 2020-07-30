@@ -3,33 +3,39 @@
       <h3>Name: {{ beer.name}}</h3>
       <h4>Tag: {{ beer.tagline }}</h4>
       
-      <div id="favourite-button" v-if="beer">
-            <button v-on:click="handleClick">Add {{beer.name}} to your favourite beers?</button>
+      <div id="favourite-button">
+            <button v-if="!favBeers.includes(beer)" v-on:click="handleClick">Add {{beer.name}} to your favourite beers?</button>
         </div>
     <img :src="beer.image_url">
-<!-- v-if="!favouriteBeers.includes(beer)" -->
+
       
   </div>
 </template>
 
 <script>
 import {eventBus} from '@/main.js';
+import FavouriteBeers from './FavouriteBeers.vue';
 
 export default {
     name: 'beer-detail',
     data() {
         return {
-            beer: null
+            beer: null,
+            favBeers: []
         }
     },
     mounted() {
-        eventBus.$on('beer-select', (beer) => {this.beer = beer})
+        eventBus.$on('beer-select', (beer) => {this.beer = beer}),
+        eventBus.$on('favourite-beers', (beers) => {this.favBeers = beers})
     },
     props: ['favourite-beer'],
     methods: {
         handleClick() {
             eventBus.$emit('favourite-beer', this.beer)
         }
+    },
+    components: {
+        'favourite-beers' : FavouriteBeers
     }
 
 }

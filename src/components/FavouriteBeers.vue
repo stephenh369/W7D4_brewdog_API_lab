@@ -20,7 +20,9 @@ export default {
         }
     },
     mounted() {
-        eventBus.$on('favourite-beer', (favBeers) => {this.favBeers.push(favBeers)})
+        eventBus.$on('favourite-beer', (favBeers) => {this.favBeers.push(favBeers)}),
+        eventBus.$emit('favourite-beers', this.favBeers)
+
     }
 
 }
