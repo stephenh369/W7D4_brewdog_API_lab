@@ -25,8 +25,7 @@
           <!-- <p v-for="(i, index) in beer.ingredients.malt" :i="i" :key="index">{{i.name}}</p> -->
       </div>
 
-      
-  </div>
+    </div>
 </template>
 
 <script>
@@ -63,7 +62,13 @@ export default {
 
 <style>
     img {
+        margin: 10px;
         width: 125px;
         height: 300px;
+    }
+    #ingredients {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 25px;
     }
 </style>
