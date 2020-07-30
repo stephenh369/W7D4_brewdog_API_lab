@@ -15,8 +15,8 @@ export default {
     };
   },
   components: {
-    "beers-select": BeersSelect,
-    "beers-detail": BeerDetailVue,
+    "beer-select": BeerSelect,
+    "beers-detail": BeerDetail,
     "favourite-beers": FavouriteBeers
   }
 }
