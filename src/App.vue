@@ -1,6 +1,7 @@
 <template>
   <div>
     <beer-select :beers="beers"/>
+    <beer-detail/>
   </div>
 </template>
 
@@ -23,7 +24,7 @@ export default {
   },
   components: {
     "beer-select": BeerSelect,
-    "beers-detail": BeerDetail,
+    "beer-detail": BeerDetail,
     "favourite-beers": FavouriteBeers
   }
 }

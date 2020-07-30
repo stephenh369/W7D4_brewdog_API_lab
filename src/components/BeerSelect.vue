@@ -1,7 +1,7 @@
 <template>
 <div>
   <select @change="handleChange" v-model="selectedBeer">
-    <option v-for="(beer, index) in beers" :beer="beer" :key="index">{{beer.name}}</option>
+    <option v-for="(beer, index) in beers" :beer="beer" :key="index" v-bind:value="beer">{{beer.name}}</option>
   </select>
 </div>
   

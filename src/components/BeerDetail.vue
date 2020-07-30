@@ -1,5 +1,9 @@
 <template>
-  
+  <div v-if='beer'>
+      <h3>Name: {{ beer.name}}</h3>
+      <h4>Tag: {{ beer.tagline }}</h4>
+      <img :src="beer.image_url">
+  </div>
 </template>
 
 <script>
@@ -12,6 +16,9 @@ export default {
             beer: null
         }
     },
+    mounted() {
+        eventBus.$on('beer-select', (beer) => {this.beer = beer})
+    },
     props: ['beer'],
     methods: {
         handleSubmit() {
@@ -23,5 +30,8 @@ export default {
 </script>
 
 <style>
-
+    img {
+        width: 125px;
+        height: 300px;
+    }
 </style>
