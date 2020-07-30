@@ -2,6 +2,7 @@
   <div>
     <beer-select :beers="beers"/>
     <beer-detail/>
+    <favourite-beers/>
   </div>
 </template>
 
