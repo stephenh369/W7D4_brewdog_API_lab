@@ -6,8 +6,15 @@
       <div id="favourite-button">
             <button v-if="!favBeers.includes(beer)" v-on:click="handleClick">Add {{beer.name}} to your favourite beers?</button>
             <button v-if="favBeers.includes(beer)" v-on:click="handleRemove">Remove {{beer.name}} from your favourite beers?</button>
-        </div>
-    <img :src="beer.image_url">
+      </div>
+      <img :src="beer.image_url">
+
+      <div id="ingredients">
+          <ul v-for="(type, index) in beer.ingredients" :type="type" :key="index">
+              <li v-for="(i, index) in type" :i="i" :key="index">{{i}}</li>
+          </ul>
+          <!-- <p v-for="(i, index) in beer.ingredients.malt" :i="i" :key="index">{{i.name}}</p> -->
+      </div>
 
       
   </div>
