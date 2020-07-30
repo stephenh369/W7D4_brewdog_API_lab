@@ -2,7 +2,13 @@
   <div v-if='beer'>
       <h3>Name: {{ beer.name}}</h3>
       <h4>Tag: {{ beer.tagline }}</h4>
-      <img :src="beer.image_url">
+      
+      <div id="favourite-button" v-if="beer">
+            <button v-on:click="handleClick">Add {{beer.name}} to your favourite beers?</button>
+        </div>
+    <img :src="beer.image_url">
+<!-- v-if="!favouriteBeers.includes(beer)" -->
+      
   </div>
 </template>
 
@@ -21,7 +27,7 @@ export default {
     },
     props: ['favourite-beer'],
     methods: {
-        handleSubmit() {
+        handleClick() {
             eventBus.$emit('favourite-beer', this.beer)
         }
     }
