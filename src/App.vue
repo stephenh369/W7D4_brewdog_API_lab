@@ -1,5 +1,7 @@
 <template>
-  
+  <div>
+    <beer-select :beers="beers"/>
+  </div>
 </template>
 
 <script>

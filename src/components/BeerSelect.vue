@@ -1,4 +1,9 @@
 <template>
+<div>
+  <select @change="handleChange" v-model="selectedBeer">
+    <option v-for="(beer, index) in beers" :beer="beer" :key="index">{{beer.name}}</option>
+  </select>
+</div>
   
 </template>
 
